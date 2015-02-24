@@ -1,0 +1,21 @@
+{
+	"name": "MrGrygson/project-verifier",
+	"description": "Project structure and config validator.",
+	"homepage": "https://github.com/MrGrygson/project-verifier",
+	"license": "MIT",
+    "authors": [
+        {
+            "name": "Damian Wielocha",
+            "email": "office@vertuli.pl",
+            "homepage": "http://vertuli.pl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "MrGrygson\\ProjectVerifier\\": "src/"
+        }
+    }
+}
