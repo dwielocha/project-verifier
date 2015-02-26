@@ -163,6 +163,7 @@ class ProjectVerifier {
         echo "\n";
         echo str_pad('', $this->options['CONSOLE_WIDTH'], '='), "\n";
         echo 'Project Verifier v'.self::VERSION.' - starting at ', date('Y-m-d H:i:s'), "\n";
+        echo 'OS: '.php_uname('s').' '.php_uname('m').', PHP version: '.PHP_VERSION."\n";
         echo "Project path: ".$this->projectPath."\n";
         echo 'Use environment: '.$this->env."\n";
         echo str_pad('', $this->options['CONSOLE_WIDTH'], '='), "\n";
