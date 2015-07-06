@@ -41,7 +41,7 @@ class CheckInstalledCommandsTask extends Task
             $this->showTaskInfo("$command", true, $subId++);
             $output = [];
 
-            exec("command -v {$command} >& /dev/null && echo 'Found' || echo 'Not Found'", $output);
+            exec("command -v {$command} > /dev/null 2>&1 && echo 'Found' || echo 'Not Found'", $output);
 
             if (isset($output[0]) && $output[0] == 'Found') {
                 $this->setStatusOk();
