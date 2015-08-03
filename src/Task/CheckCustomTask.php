@@ -14,16 +14,24 @@ class CheckCustomTask extends Task
     protected $label;
 
     protected $callable;
+    
+    /**
+     * @var array 
+     */ 
+    protected $parameters;
 
     /**
      * Constructor
+     * 
      * @param string $label
      * @param callable $callable
+     * @param array $params
      */
-    public function __construct($label, callable $callable)
+    public function __construct($label, callable $callable, array $params = [])
     {
         $this->label = $label;
         $this->callable = $callable;
+        $this->parameters = $params;
     }
 
     /**
@@ -42,8 +50,9 @@ class CheckCustomTask extends Task
     {
         $this->showTaskInfo($this->getLabel());
         $callable = $this->callable;
+        $params = $this->parameters;
 
-        if ($callable()) {
+        if (call_user_func_array($callable, $params)) {
             $this->setStatusOk();
         } else {
             $this->setStatusFail();
