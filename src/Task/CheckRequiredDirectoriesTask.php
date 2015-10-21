@@ -48,7 +48,7 @@ class CheckRequiredDirectoriesTask extends Task
             if (file_exists($directory)) {
                 $this->setStatusOk();
             } else {
-                if (@mkdir($directory)) {
+                if (@mkdir($directory, 0777, true)) {
                     $this->setStatusOk('CREATED');
                 } else {
                     $this->setStatusFail();
