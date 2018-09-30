@@ -101,16 +101,16 @@ class CheckPhpIniTask extends Task
     {
         $sortArray = array(); 
 
-        foreach($this->settings as $option){ 
-            foreach($option as $key => $value){ 
-                if(!isset($sortArray[$key])){ 
+        foreach ($this->settings as $option) { 
+            foreach ($option as $key => $value) { 
+                if (!isset($sortArray[$key])) { 
                     $sortArray[$key] = array(); 
                 } 
                 $sortArray[$key][] = $value; 
             } 
         } 
  
-        array_multisort($sortArray['option'],SORT_DESC, $this->settings);
+        array_multisort($sortArray['option'], SORT_DESC, $this->settings);
     }
 
     /**
@@ -121,7 +121,12 @@ class CheckPhpIniTask extends Task
     protected function convertToBytes($value)
     {
         $value = trim($value);
-        $last = strtolower($value[strlen($value)-1]);
+        $last = strtolower($value[strlen($value) - 1]);
+        
+        // If unit modifier is used, remove it
+        if (!is_numeric($last)) {
+            $value = substr($value, 0, -1);
+        }
 
         switch($last) {
             // The 'G' modifier is available since PHP 5.1.0
